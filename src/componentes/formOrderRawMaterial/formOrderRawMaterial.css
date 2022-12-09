@@ -21,14 +21,18 @@
 }
 
 .itemOrderRawMaterial,
-.cantidadMaterial {
+.cantidadMaterial, .flex {
     display: flex;
     flex-direction: row;
 
 }
 
-.itemOrderRawMaterial {
+.itemOrderRawMaterial, .spaceBet {
     justify-content: space-between;
+}
+
+.footerItemMaterial{
+    margin-top: 100px;
 }
 
 .cantidadMaterial p,
@@ -37,7 +41,10 @@ input {
     margin: auto 0;
 }
 
-
+.proveedor{
+    color: var(--verde);
+    margin-top: 0;
+}
 
 button {
     background-color: var(--naranja);

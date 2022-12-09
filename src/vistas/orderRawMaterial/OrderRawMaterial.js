@@ -4,9 +4,11 @@ import FormOrderRawMaterial from '../../componentes/formOrderRawMaterial/FormOrd
 
 export default function OrderRawMaterial() {
     const [RawMaterial, setRawMaterial] = useState([]);
+    const [Supplier, setSupplier] = useState([]);
 
     useEffect(() => {
         GETRawMaterial();
+        GETSupplier();
     }, [])
 
 
@@ -17,10 +19,16 @@ export default function OrderRawMaterial() {
         setRawMaterial(data);
     }
 
+    const GETSupplier = async () => {
+        const response = await fetch(`http://localhost:8081/supplier/findAll`);
+        const data = await response.json();
+        setSupplier(data);
+    }
+
 
     return (
         <div>
-            <FormOrderRawMaterial itemMaterial = {RawMaterial}/>
+            <FormOrderRawMaterial itemMaterial={RawMaterial} supplier={Supplier} />
         </div>
     )
 }
