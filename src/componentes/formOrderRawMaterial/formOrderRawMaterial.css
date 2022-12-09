@@ -1,0 +1,68 @@
+.containerForm {
+    margin: 40px auto;
+    padding: 20px;
+
+    width: 70%;
+    height: auto;
+    -webkit-box-shadow: 0px 10px 21px 3px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 0px 10px 21px 3px rgba(0, 0, 0, 1);
+    box-shadow: 0px 10px 21px 3px rgba(0, 0, 0, 1);
+    background-color: var(--blanco);
+
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border: 0px solid #000000;
+}
+
+.containerForm h1 {
+    text-align: center;
+    color: var(--naranja);
+}
+
+.itemOrderRawMaterial,
+.cantidadMaterial {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.itemOrderRawMaterial {
+    justify-content: space-between;
+}
+
+.cantidadMaterial p,
+input {
+    height: 35%;
+    margin: auto 0;
+}
+
+
+
+button {
+    background-color: var(--naranja);
+    color: var(--blanco);
+    border: none;
+    font-size: 1rem;
+    padding: 1.0rem;
+    text-transform: capitalize;
+    text-align: center;
+    margin-bottom: 1rem;
+    border-radius: 30px;
+}
+
+button:hover,
+button:focus {
+    background-color: var(--naranjaOscuro);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+button:active {
+    background-color: var(--naranjaOscuro);
+    box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+    transform: translateY(0);
+}
