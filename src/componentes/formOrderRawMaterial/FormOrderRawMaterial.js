@@ -8,12 +8,15 @@ export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
 
     let [formMaterial, setFormMaterial] = useState([]);
     const [ID_MaterialOrder, setID_MaterialOrder] = useState(null);
-    const [Supplier, setSupplier] = useState("Proveedor")
+    const [Proveedor, setProveedor] = useState();
+
+
 
     useEffect(() => {
         GETRawMaterialOrder();
+        setProveedor(supplier);
     }, [])
-    
+
 
     //                      Form
 
@@ -42,12 +45,6 @@ export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
     }
 
 
-    //Proveedores
-    const itemSupplier = [];
-    supplier.map(item => {
-        itemSupplier.push(item.n_name)
-    })
-
 
     //                          POST raw_material_order
     const POSTRawMaterialOrder = async (object) => {
@@ -65,20 +62,20 @@ export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
     const GETRawMaterialOrder = async () => {
         const response = await fetch(`http://localhost:8081/raw_material_order/findAll`);
         const data = await response.json();
-        setID_MaterialOrder(data.length+1);
+        setID_MaterialOrder(data.length + 1);
     }
 
     const eventBuyMaterialOrder = () => {
-        
+
 
         let object = {
-            raw_material_order:{
+            raw_material_order: {
                 k_id: ID_MaterialOrder,
-                supplier_id:12345, //Pendiente
-                admin_id:789456123, //Modulo Daniel
-                v_total_price:0.0 //Pendiente
+                supplier_id: Proveedor,
+                admin_id: 789456123, //Modulo Daniel
+                v_total_price: 0.0 //Pendiente
             },
-            raw_material_order_items:formMaterial
+            raw_material_order_items: formMaterial
         }
 
         POSTRawMaterialOrder(object);
@@ -91,48 +88,57 @@ export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
             <hr></hr>
 
             <form onSubmit={handleSubmit}>
-                {
-                    itemMaterial.map((item, index) => {
-                        return (
-                            <div className='itemOrderRawMaterial' key={index}>
-                                <input
-                                    type="text"
-                                    name="raw_material_id"
-                                    value={item.k_id}
-                                    disabled={true}
-                                    onChange={event => { handleFormChange(index, event) }}>
-                                </input>
-                                <input
-                                    type="text"
-                                    name="n_name"
-                                    value={item.n_name}
-                                    disabled={true}>
-                                </input>
-                                <input
-                                    type="number"
-                                    name="q_quantity"
-                                    min={0}
-                                    value={formMaterial.q_quantity}
-                                    onChange={event => { handleFormChange(index, event) }}>
-                                </input>
-                                <input
-                                    type="text"
-                                    name="v_unit_price"
-                                    value={100}
-                                    disabled={true}>
-                                </input>
-                            </div>
-                        );
-                    })
-                }
+                <div className='grid'>
+
+                    <h3>ID Material</h3>
+                    <h3>Material</h3>
+                    <h3>Cantidad</h3>
+                    <h3>Precio unitario</h3>
+                    {
+                        itemMaterial.map((item, index) => {
+                            return (
+                                <>
+                                    <input
+                                        type="text"
+                                        name="raw_material_id"
+                                        value={item.k_id}
+                                        disabled={true}
+                                        onChange={event => { handleFormChange(index, event) }}>
+                                    </input>
+                                    <input
+                                        type="text"
+                                        name="n_name"
+                                        value={item.n_name}
+                                        disabled={true}>
+                                    </input>
+                                    <input
+                                        type="number"
+                                        name="q_quantity"
+                                        min={0}
+                                        value={formMaterial.q_quantity}
+                                        onChange={event => { handleFormChange(index, event) }}>
+                                    </input>
+                                    <input
+                                        type="text"
+                                        name="v_unit_price"
+                                        value={100}
+                                        disabled={true}>
+                                    </input>
+                                </>
+                            );
+                        })
+                    }
+                </div>
 
                 <div className='footerItemMaterial'>
                     <div className='flex spaceBet'>
                         <h3 className='proveedor'>Proveedor:</h3>
                         <DropdownList
-                            value={Supplier}
-                            onChange={(nextValue) => setSupplier(nextValue)}
-                            data={itemSupplier}
+                            dataKey="k_id"
+                            textField="n_name"
+                            value={Proveedor}
+                            onChange={(nextValue) => setProveedor(nextValue.k_id)}
+                            data={supplier}
                         />
                     </div>
                     <button>Comprar</button>
