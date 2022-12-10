@@ -24,7 +24,7 @@ export default function ShowOrder() {
   };
 
   const handleVolver = () =>{
-    navigate('/createOrder', {state: {id: idAdmin}});
+    navigate('/createOrder', {state: {id: idAdmin.id}});
   }
 
   return (
