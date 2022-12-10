@@ -74,7 +74,7 @@ export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
             raw_material_order: {
                 k_id: ID_MaterialOrder,
                 supplier_id: Proveedor,
-                admin_id: 789456123, //Modulo Daniel
+                admin_id: admin_id_Prop,//789456123, //Modulo Daniel
                 v_total_price: 0.0 //Pendiente
             },
             raw_material_order_items: formMaterial
@@ -92,7 +92,7 @@ export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
             <form onSubmit={handleSubmit}>
                 <div className='grid'>
 
-                    <h3>{admin_id_Prop}</h3>
+                    <h3>ID Material</h3>
                     <h3>Material</h3>
                     <h3>Cantidad</h3>
                     <h3>Precio unitario</h3>
