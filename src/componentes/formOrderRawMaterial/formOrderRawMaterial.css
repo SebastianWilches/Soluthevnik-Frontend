@@ -60,6 +60,10 @@ input {
     margin-top: 0.5rem;
 }
 
+#btn-Historico{
+    margin:1%
+}
+
 button {
     background-color: var(--naranja);
     color: var(--blanco);

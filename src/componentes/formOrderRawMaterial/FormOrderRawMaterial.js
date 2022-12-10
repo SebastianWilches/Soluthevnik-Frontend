@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react'
 import './formOrderRawMaterial.css';
 import "react-widgets/styles.css";
 import DropdownList from "react-widgets/DropdownList";
-import {useLocation} from 'react-router-dom'
+import {useLocation,useNavigate} from 'react-router-dom'
 
 export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
     const {state} = useLocation();
     const admin_id_Prop = state;
+    console.log("holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+    console.log(admin_id_Prop.id)
+    const navigate = useNavigate();
 
     let [formMaterial, setFormMaterial] = useState([]);
     const [ID_MaterialOrder, setID_MaterialOrder] = useState(null);
@@ -50,6 +53,8 @@ export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
 
     //                          POST raw_material_order
     const POSTRawMaterialOrder = async (object) => {
+        console.log("AQUI ESTA EL OBJETOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
+        console.log(object);
         const response = await fetch('http://localhost:8081/raw_material_order/save',
             {
                 method: 'POST',
@@ -74,13 +79,17 @@ export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
             raw_material_order: {
                 k_id: ID_MaterialOrder,
                 supplier_id: Proveedor,
-                admin_id: admin_id_Prop,//789456123, //Modulo Daniel
+                admin_id: admin_id_Prop.id,//789456123, //Modulo Daniel
                 v_total_price: 0.0 //Pendiente
             },
             raw_material_order_items: formMaterial
         }
 
         POSTRawMaterialOrder(object);
+    }
+
+    const handleShowOrders =() =>{
+        navigate('/ListOrders', {state: {id: admin_id_Prop.id}});
     }
 
 
@@ -144,6 +153,7 @@ export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
                         />
                     </div>
                     <button>Comprar</button>
+                    <button id="btn-Historico" onClick={handleShowOrders}>Mostar Historico</button>
                 </div>
             </form>
         </div>

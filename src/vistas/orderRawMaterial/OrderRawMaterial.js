@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import FormOrderRawMaterial from '../../componentes/formOrderRawMaterial/FormOrderRawMaterial';
-
+//import {useLocation, useNavigate} from 'react-router-dom';
 
 export default function OrderRawMaterial() {
+    //const {state} = useLocation();
+    //const admin_id_Prop = state;
+    //const navigate = useNavigate();
+
     const [RawMaterial, setRawMaterial] = useState([]);
     const [Supplier, setSupplier] = useState([]);
 
