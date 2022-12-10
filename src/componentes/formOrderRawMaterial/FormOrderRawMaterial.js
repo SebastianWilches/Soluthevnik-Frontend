@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import './formOrderRawMaterial.css';
 import "react-widgets/styles.css";
-import Combobox from "react-widgets/Combobox";
+import DropdownList from "react-widgets/DropdownList";
 
 export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
 
 
     let [formMaterial, setFormMaterial] = useState([]);
     const [ID_MaterialOrder, setID_MaterialOrder] = useState(null);
+    const [Supplier, setSupplier] = useState("Proveedor")
 
     useEffect(() => {
         GETRawMaterialOrder();
@@ -128,8 +129,9 @@ export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
                 <div className='footerItemMaterial'>
                     <div className='flex spaceBet'>
                         <h3 className='proveedor'>Proveedor:</h3>
-                        <Combobox
-                            defaultValue=""
+                        <DropdownList
+                            value={Supplier}
+                            onChange={(nextValue) => setSupplier(nextValue)}
                             data={itemSupplier}
                         />
                     </div>

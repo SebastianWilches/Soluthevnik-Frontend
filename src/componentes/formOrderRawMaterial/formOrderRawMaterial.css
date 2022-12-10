@@ -43,7 +43,7 @@ input {
 
 .proveedor{
     color: var(--verde);
-    margin-top: 0;
+    margin-top: 0.5rem;
 }
 
 button {
