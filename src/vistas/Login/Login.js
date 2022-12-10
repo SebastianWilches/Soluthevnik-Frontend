@@ -23,17 +23,30 @@ export default function Login() {
   };
 
   const sendLogin = async (User) => {
-    const response = await fetch(
-      `https://crud-financial-products.herokuapp.com/person/login?id=${User.id}&password=${User.password}`
-    );
-    const data = await response.json();
-    if (data) {
-      navigate("/createOrder", { state: { id: user.id } });
-    }
-  };
+    try{
+        user.id = parseInt(user.id)
+        const response = await fetch(`http://localhost:8081/admin/login?k_id=${User.id}&password=${User.password}`, {
+          method: 'POST',
+          body: JSON.stringify(User),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        const data = await response.json()
+        console.log(data)
+        if(data == true){
+            navigate('/createOrder', {state: {id: User.id}});
+          }else{
+            alert("Datos Incorrectos")
+          }
+    
+      }catch (error){
+        alert("Datos Incorrectos");
+      }
+      }
 
   return (
-    <div className="containerForm">
+    <div className="containerFormLogin">
       <h1>Ingreso de administrador</h1>
       <hr></hr>
       <form className="formLogin" onSubmit={handleSendLogin}>
@@ -46,7 +59,7 @@ export default function Login() {
         />
         <input
           className="login-input"
-          type="text"
+          type="password"
           placeholder="Escriba su contraseña"
           name="password"
           onChange={handleLogin}

@@ -1,0 +1,38 @@
+.order-container{
+    width: 90%;
+    min-height: 65px;
+    background-color: #1b1b32;
+    margin: auto;
+    padding: 8px 15px 8px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 7px;
+    border: 1px solid white;
+  }
+  
+  .order-container:nth-child(3n + 1) {
+    background-color: #D9560B;
+  }
+  
+  .order-container:nth-child(3n + 2) {
+    background-color: #F07B00;
+  }
+  
+  .order-container:nth-child(3n + 3) {
+    background-color: #E69200;
+  }
+  
+  .order{
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    overflow-wrap: anywhere; /* si el texto es muy largo se corta y sigue debajo*/
+    color: white;
+  }
+
+  .order >p{
+    margin: 2%;
+  }

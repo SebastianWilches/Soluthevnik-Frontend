@@ -1,8 +1,8 @@
-.containerFormLogin {
+.containerOrders {
     margin: 40px auto;
     padding: 20px;
 
-    width: 40%;
+    width: 80%;
     height: auto;
     -webkit-box-shadow: 0px 10px 21px 3px rgba(0, 0, 0, 1);
     -moz-box-shadow: 0px 10px 21px 3px rgba(0, 0, 0, 1);
@@ -15,7 +15,7 @@
     border: 0px solid #000000;
 }
 
-.containerFormLogin h1 {
+.containerOrders h1 {
     text-align: center;
     color: var(--naranja);
 }
@@ -32,6 +32,11 @@
     margin-bottom: 1rem;
 }
 
+.containerBoton{
+    display: flex;
+    margin: 1%;
+}
+
 button {
     background-color: var(--naranja);
     color: var(--blanco);
@@ -43,6 +48,10 @@ button {
     margin-bottom: 1rem;
     border-radius: 30px;
     margin: auto;
+}
+
+.btn-volver{
+    width: 50%;
 }
 
 button:hover,

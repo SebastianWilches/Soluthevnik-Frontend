@@ -1,6 +1,7 @@
 import './App.css';
 import OrderRawMaterial from "./vistas/orderRawMaterial/OrderRawMaterial";
 import Login from "./vistas/Login/Login";
+import ShowOrder from './vistas/ShowOrder/ShowOrder'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -8,8 +9,9 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/login' element={<Login/>}/>
+          <Route path='/' element={<Login/>}/>
           <Route path='/createOrder' element={<OrderRawMaterial/>}/>
+          <Route path='/ListOrders' element={<ShowOrder/>}/>
         </Routes>
       </BrowserRouter>
     </>
