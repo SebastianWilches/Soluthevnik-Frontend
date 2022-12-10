@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import './formOrderRawMaterial.css';
 import "react-widgets/styles.css";
 import DropdownList from "react-widgets/DropdownList";
+import {useLocation} from 'react-router-dom'
 
 export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
-
+    const {state} = useLocation();
+    const admin_id_Prop = state;
 
     let [formMaterial, setFormMaterial] = useState([]);
     const [ID_MaterialOrder, setID_MaterialOrder] = useState(null);
@@ -72,7 +74,7 @@ export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
             raw_material_order: {
                 k_id: ID_MaterialOrder,
                 supplier_id: Proveedor,
-                admin_id: 789456123, //Modulo Daniel
+                admin_id: admin_id_Prop,//789456123, //Modulo Daniel
                 v_total_price: 0.0 //Pendiente
             },
             raw_material_order_items: formMaterial
