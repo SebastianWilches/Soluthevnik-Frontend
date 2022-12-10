@@ -8,10 +8,14 @@ export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
 
     let [formMaterial, setFormMaterial] = useState([]);
     const [ID_MaterialOrder, setID_MaterialOrder] = useState(null);
-    const [Supplier, setSupplier] = useState("Proveedor")
+    // const [Supplier, setSupplier] = useState("Proveedor");
+    const [Proveedor, setProveedor] = useState();
+
+    
 
     useEffect(() => {
         GETRawMaterialOrder();
+        setProveedor(supplier);
     }, [])
     
 
@@ -43,10 +47,10 @@ export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
 
 
     //Proveedores
-    const itemSupplier = [];
-    supplier.map(item => {
-        itemSupplier.push(item.n_name)
-    })
+    // const itemSupplier = [];
+    // supplier.map(item => {
+    //     itemSupplier.push(item.n_name)
+    // })
 
 
     //                          POST raw_material_order
@@ -74,7 +78,7 @@ export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
         let object = {
             raw_material_order:{
                 k_id: ID_MaterialOrder,
-                supplier_id:12345, //Pendiente
+                supplier_id: Proveedor,
                 admin_id:789456123, //Modulo Daniel
                 v_total_price:0.0 //Pendiente
             },
@@ -130,10 +134,18 @@ export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
                     <div className='flex spaceBet'>
                         <h3 className='proveedor'>Proveedor:</h3>
                         <DropdownList
+                            dataKey="k_id"
+                            textField="n_name"
+                            value={Proveedor}
+                            onChange={(nextValue) => setProveedor(nextValue.k_id)}
+                            data={supplier}
+
+                        />
+                        {/* <DropdownList
                             value={Supplier}
                             onChange={(nextValue) => setSupplier(nextValue)}
                             data={itemSupplier}
-                        />
+                        /> */}
                     </div>
                     <button>Comprar</button>
                 </div>
