@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import './formOrderRawMaterial.css';
 import "react-widgets/styles.css";
 import DropdownList from "react-widgets/DropdownList";
+import {useLocation} from 'react-router-dom'
 
 export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
-
+    const {state} = useLocation();
+    const admin_id_Prop = state;
 
     let [formMaterial, setFormMaterial] = useState([]);
     const [ID_MaterialOrder, setID_MaterialOrder] = useState(null);
@@ -90,7 +92,7 @@ export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
             <form onSubmit={handleSubmit}>
                 <div className='grid'>
 
-                    <h3>ID Material</h3>
+                    <h3>{admin_id_Prop}</h3>
                     <h3>Material</h3>
                     <h3>Cantidad</h3>
                     <h3>Precio unitario</h3>
