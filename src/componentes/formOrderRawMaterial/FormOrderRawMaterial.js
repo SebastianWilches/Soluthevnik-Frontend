@@ -3,6 +3,7 @@ import './formOrderRawMaterial.css';
 import "react-widgets/styles.css";
 import DropdownList from "react-widgets/DropdownList";
 import {useLocation,useNavigate} from 'react-router-dom'
+import Swal from 'sweetalert2';
 
 export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
     const {state} = useLocation();
@@ -73,7 +74,10 @@ export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
     }
 
     const eventBuyMaterialOrder = () => {
-
+   
+        
+        let items = []   
+        items = formMaterial.filter(item => item.q_quantity.toString() !== '0');
 
         let object = {
             raw_material_order: {
@@ -82,20 +86,38 @@ export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
                 admin_id: admin_id_Prop.id,//789456123, //Modulo Daniel
                 v_total_price: 0.0 //Pendiente
             },
-            raw_material_order_items: formMaterial
+            raw_material_order_items: items
         }
 
         POSTRawMaterialOrder(object);
+    }
+
+    const successOrder = () =>{
+        Swal.fire({
+            title: "¡Compra registrada!",
+            icon: "success",
+            button: "Aww yiss!",
+          });
     }
 
     const handleShowOrders =() =>{
         navigate('/ListOrders', {state: {id: admin_id_Prop.id}});
     }
 
+    
+
 
     return (
         <div className='containerForm'>
-            <h1>Realizar pedido de materia prima</h1>
+            <h1>Realizar pedido de materia prima
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-truck-delivery" width="35" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="#D9560B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <circle cx="7" cy="17" r="2" />
+            <circle cx="17" cy="17" r="2" />
+            <path d="M5 17h-2v-4m-1 -8h11v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5" />
+            <line x1="3" y1="9" x2="7" y2="9" />
+            </svg>
+            </h1>
             <hr></hr>
 
             <form onSubmit={handleSubmit}>
@@ -152,8 +174,8 @@ export default function FormOrderRawMaterial({ itemMaterial, supplier }) {
                             data={supplier}
                         />
                     </div>
-                    <button>Comprar</button>
-                    <button id="btn-Historico" onClick={handleShowOrders}>Mostar Historico</button>
+                    <button onClick={successOrder}>Comprar</button>
+                    <button id="btn-Historico" onClick={handleShowOrders}>Mostrar Histórico</button>
                 </div>
             </form>
         </div>

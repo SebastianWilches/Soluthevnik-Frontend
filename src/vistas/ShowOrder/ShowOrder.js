@@ -29,7 +29,15 @@ export default function ShowOrder() {
 
   return (
     <div className="containerOrders">
-      <h1>Histórico de Ordenes de materia prima</h1>
+      <h1>Histórico de Ordenes de materia prima
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-devices" width="36" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="#D9560B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <rect x="13" y="8" width="8" height="12" rx="1" />
+      <path d="M18 8v-3a1 1 0 0 0 -1 -1h-13a1 1 0 0 0 -1 1v12a1 1 0 0 0 1 1h9" />
+      <line x1="16" y1="9" x2="18" y2="9" />
+     </svg>
+
+      </h1>
       <hr></hr>
       {Object.entries(Orders).map(([key, value]) => {
         return <Order Info={value} />;

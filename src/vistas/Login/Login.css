@@ -30,6 +30,9 @@
 .login-input{
     margin: auto;
     margin-bottom: 1rem;
+    height: 30px;
+    text-align: center;
+    font-size: 20px;
 }
 
 button {
