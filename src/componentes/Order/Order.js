@@ -10,6 +10,7 @@ function Order ( {Info}) {
                 <p>Cantidad: {Info.q_quantity} </p>
                 <p>Proveedor: {Info.rawMaterialOrderItemPK.rawMaterialOrder.supplier.n_name} </p>
                 <p>Realizado por: {Info.rawMaterialOrderItemPK.rawMaterialOrder.admin.n_name} {Info.rawMaterialOrderItemPK.rawMaterialOrder.admin.n_lastname}</p>
+                <p>Valor Orden: {Info.rawMaterialOrderItemPK.rawMaterialOrder.v_total_price}</p>
             </div>
       </div>
     )
